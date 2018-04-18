@@ -1,16 +1,12 @@
 buildscript {
     ext {
-        springBootVersion = '2.0.0.RELEASE'
         sonarQubePluginVersion = '2.6.2'
         coverallsPluginVersion = '2.8.2'
     }
     repositories {
         mavenCentral()
-        maven { url "https://repo.spring.io/snapshot" }
-        maven { url "https://repo.spring.io/milestone" }
     }
     dependencies {
-        classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
         classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:${sonarQubePluginVersion}"
         classpath "org.kt3k.gradle.plugin:coveralls-gradle-plugin:${coverallsPluginVersion}"
     }
@@ -19,8 +15,6 @@ buildscript {
 apply plugin: 'java'
 apply plugin: 'groovy'
 apply plugin: 'eclipse'
-apply plugin: 'org.springframework.boot'
-apply plugin: 'io.spring.dependency-management'
 apply plugin: 'jacoco'
 apply plugin: 'checkstyle'
 apply plugin: 'findbugs'
@@ -35,34 +29,23 @@ sourceCompatibility = 1.8
 repositories {
     mavenCentral()
     jcenter()
-    maven { url "https://repo.spring.io/snapshot" }
-    maven { url "https://repo.spring.io/milestone" }
 }
 
 dependencies {
-    // spring boot
-    compile('org.springframework.boot:spring-boot-starter')
-    compile('org.springframework.boot:spring-boot-starter-webflux')
-
     compile('com.google.code.findbugs:jsr305:3.0.2') // weird
+    compile('org.codehaus.groovy:groovy-all:2.4.15')
 
-    compile('org.codehaus.groovy:groovy-all')
+    compile('ch.qos.logback:logback-classic:1.2.3')
+    compile('ch.qos.logback:logback-core:1.2.3')
 
-    compile('net.bytebuddy:byte-buddy:1.8.0')
-
-    compile('com.google.guava:guava:24.1-jre')
-
-    compileOnly('org.projectlombok:lombok')
+    // aws dependencies
+    compile('com.amazonaws:aws-lambda-java-core:1.2.0')
+    compile('com.amazonaws:aws-lambda-java-events:2.1.0')
+    compile('com.amazonaws:aws-java-sdk-s3:1.11.313')
 
     // spock dependencies
     testCompile('org.spockframework:spock-core:1.1-groovy-2.4')
     testCompile('org.spockframework:spock-spring:1.1-groovy-2.4')
-
-    testCompile('org.springframework.boot:spring-boot-starter-test')
-
-    // domain testing
-    testCompile('com.openpojo:openpojo:0.8.9')
-    testCompile('nl.jqno.equalsverifier:equalsverifier:2.4.3')
 }
 
 checkstyle {
