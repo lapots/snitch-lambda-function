@@ -7,6 +7,7 @@ import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.s3.model.GetObjectRequest;
 import com.amazonaws.services.s3.model.S3Object;
+import com.amazonaws.util.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -31,8 +32,8 @@ public class SnitchRuleCreationHandler implements RequestHandler<S3Event, String
 
             S3Object object = s3client.getObject(new GetObjectRequest(s3bucket, s3key));
             InputStream objectData = object.getObjectContent();
-            // TODO:implement object processing
             try {
+                String uploadedRule = IOUtils.toString(objectData);
                 objectData.close();
             } catch (IOException e) {
                 LOGGER.error("Failed to close object stream!", e);
