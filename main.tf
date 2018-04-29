@@ -20,7 +20,7 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "game_rules" {
-  bucket = "game_rules"
+  bucket = "judge-game-rules"
   acl = "private"
 
   tags {
@@ -55,7 +55,6 @@ resource "aws_lambda_permission" "allow_bucket" {
   source_arn = "${aws_s3_bucket.game_rules.arn}"
 }
 
-# TODO: investigate
 resource "aws_lambda_function" "snitch" {
   filename = "build/libs/snitch-lambda-function-1.0.jar"
   function_name = "snitch_rule_function"
