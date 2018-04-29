@@ -64,7 +64,7 @@ resource "aws_lambda_function" "snitch" {
 
   environment {
     variables {
-      "aws.judge.url" = "${var.judge_url}"
+      "aws_judge_url" = "${var.judge_url}"
     }
   }
 }

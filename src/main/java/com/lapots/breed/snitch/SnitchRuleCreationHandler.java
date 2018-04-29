@@ -21,7 +21,7 @@ import java.io.InputStream;
 public class SnitchRuleCreationHandler implements RequestHandler<S3Event, String> {
     private static final Logger LOGGER = LoggerFactory.getLogger(SnitchRuleCreationHandler.class);
 
-    private static final String AWS_JUDGE_ADD_URL = System.getenv("aws.judge.url");
+    private static final String AWS_JUDGE_ADD_URL = System.getenv("aws_judge_url");
 
     @Override
     public String handleRequest(S3Event input, Context context) {
