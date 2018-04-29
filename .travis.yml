@@ -1,0 +1,12 @@
+language: java
+jdk: oraclejdk8
+notifications:
+  email:
+    on_failure: never
+    on_success: never
+deploy:
+  provider: script
+  script: bash deploy.sh
+env:
+  global:
+    secure: Oo5DZWh0NTmCH7baCxI4JAMercc/adzriKFT6fznXGG+TZhiWy2jkHQFZsnPmBwNVS6yRC9EsGxGcdz08N3RAlWCfEAU2ql4zLmNMv5fGJ2dJRMQviGlYpq0N5HgiYOteqap0TmCAnIuPKzUqTse16nn/1AhKS90+YtiYfyFz3uH2CCMtQZwyCYlgpNwnZXPNtX2dVF5CstOntonSbadfSi+R+/xkqBehc+xrnijmtNHle2dyAg8SPnFVvCe5ioty6mreodTNbwG4xIf06eJW1rCgoJm0yyO7utnOT/lej1iiF/AjlxbTlUQ53911lfIbHhvn1quxw3O+S1ExLIVlzlTGoSWJsMq08yPc2yQIKLpMfrRjEfU7c6dwec4rlM2XoradsiyA6HDYd+f1p6QcQiBJem0Br8q1yvO72L6mzOR6PDOxpQ52WQTnwDtSskluNm/NXf7mlX9VkXsjoqqQjtChLEzJfYsQcJWkWsB1OLv2GZpnCb9Z27Bt7pTw0gpJn3O6lFtUEBFJZZifmPFmPdBHToUNceRv2+djhULfcWHh3SLy+dEhDKyOLwTcOxOnpDhFMK1zwHhS5o3QfdXk2n1TTartJmk95r751E+4yR88ndTMGJUHn08G1jjoAxiDaxRj1RizMB6S2msAx7PKIZu+Mlb0p0PL/L6BSruibw=
