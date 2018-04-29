@@ -6,22 +6,17 @@ terraform {
   }
 }
 
-variable "travisci_token" {}
+variable "aws_access_key_id" {}
+variable "aws_secret_access_key" {}
+
 variable "judge_url" {
   default = "http://judge.eu-central-1.elasticbeanstalk.com/judge/rest/player"
 }
 
-provider "travisci" {
-  github_owner = "lapots"
-  travisci_token = "${var.travisci_token}"
-}
-
-resource "travisci_repository" "travis_resource" {
-  slug = "lapots/snitch-lambda-function"
-}
-
 provider "aws" {
   region = "eu-central-1"
+  access_key = "${var.aws_access_key_id}"
+  secret_key = "${var.aws_secret_access_key}"
 }
 
 resource "aws_s3_bucket" "game_rules" {
