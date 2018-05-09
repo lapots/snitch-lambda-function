@@ -48,6 +48,8 @@ dependencies {
     // spock dependencies
     testCompile('org.spockframework:spock-core:1.1-groovy-2.4')
     testCompile('org.spockframework:spock-spring:1.1-groovy-2.4')
+
+    compile('com.amazonaws:aws-lambda-java-log4j:1.0.0')
 }
 
 checkstyle {
